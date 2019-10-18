@@ -1,0 +1,63 @@
+27 Feb 2009 - MTH           v 1.0
+=================================
+Original release supporting MSSP, MCCP, NAWS, TTYPE, and NEW_ENVIRON.
+
+
+05 Mar 2009 - MTH           v 1.1
+=================================
+Better documentation.
+
+16 Mar 2009 - MTH           v 1.2
+=================================
+
+Adds telbuf to deal with packet fragmentation. Not necessary, but might be
+useful for future extentions with large data chunks.
+
+Adds announce_support function to automatically announce all supported
+protocols as defined in the telnet table.
+
+
+06 Apr 2009 - MTH           v 1.3
+=================================
+Updated MSSP core variables and \r handling to translate \r\0 to \n.
+
+
+17 May 2009 - WickedMUD     v 1.0
+=================================
+Removed threading and the dns lookup which arguably don't have much use,
+and some other changes to get the code to compile on Cygwin.
+
+Removed the old mccp code and added MTH (Mud Telopt Handler) instead
+which adds NAWS, TTYPE, MCCP, and MSSP support.
+
+Added local echo handling for passwords.
+
+
+23 Jul 2010 - WickedMUD     v 1.1
+=================================
+Added basic MSDP support, when enabled the server spits out some test data,
+useful for clients wanting to debug the MSDP core.
+
+
+06 Jul 2011 - MTH           v 1.4
+=================================
+Added EOR support, disabled by default in tables.c
+
+Added full MSDP support in msdp.c
+
+Added xterm 256 color support in color.c
+
+
+12 Aug 2019 - MTH          v 1.5
+================================
+
+Added CHARSET support to detect UTF-8
+
+Added MCCP3 support
+
+Added MSDP over GMCP support.
+
+
+18 Oct 2019 - WickedMUD    v 1.5
+================================
+

@@ -1,0 +1,9 @@
+SocketMUD(tm) is released under Public Domain. Parts of the code was 
+written by Erwin Andreasen (http://www.andreasen.org/), and even though
+the code written by Erwin is also public domain, it would be nice if any 
+user of this codebase would keep the credits for Erwin. The copyover and 
+buffer code is inspired, converted and sometimes copy/pasted from the code 
+found on his website.
+
+WickedMUD includes the MTH snippet by Igor van den Hoven which is released
+under Public Domain.
