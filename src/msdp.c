@@ -121,7 +121,7 @@ void msdp_update_var(D_S *d, char *var, char *fmt, ...)
 
 void msdp_update_var_instant(D_S *d, char *var, char *fmt, ...)
 {
-	char buf[MAX_OUTPUT];
+	char buf[MAX_OUTPUT], out[MAX_OUTPUT];
 	int index, length;
 	va_list args;
 
@@ -150,9 +150,9 @@ void msdp_update_var_instant(D_S *d, char *var, char *fmt, ...)
 
 	if (HAS_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_REPORTED))
 	{
-		length = sprintf(buf, "%c%c%c%c%s%c%s%c%c", IAC, SB, TELOPT_MSDP, MSDP_VAR, msdp_table[index].name, MSDP_VAL, buf, IAC, SE);
+		length = sprintf(out, "%c%c%c%c%s%c%s%c%c", IAC, SB, TELOPT_MSDP, MSDP_VAR, msdp_table[index].name, MSDP_VAL, buf, IAC, SE);
 
-		write_msdp_to_descriptor(d, buf, length);
+		write_msdp_to_descriptor(d, out, length);
 	}
 }
 
@@ -181,7 +181,7 @@ void msdp_send_update(D_S *d)
 			DEL_BIT(d->mth->msdp_data[index]->flags, MSDP_FLAG_UPDATED);
 		}
 
-		if (ptr - buf > MAX_OUTPUT - MAX_INPUT)
+		if (ptr - buf > MAX_OUTPUT - MAX_INPUT_LEN)
 		{
 			log_descriptor_printf(d, "MSDP BUFFER OVERFLOW");
 			break;
@@ -439,10 +439,10 @@ void msdp_command_unreport(D_S *d, int index)
 
 void msdp_configure_arachnos(D_S *d, int index)
 {
-	char var[MAX_INPUT], val[MAX_INPUT];
-	char mud_name[MAX_INPUT], mud_host[MAX_INPUT], mud_port[MAX_INPUT];
-	char msg_user[MAX_INPUT], msg_time[MAX_INPUT], msg_body[MAX_INPUT];
-	char mud_players[MAX_INPUT], mud_uptime[MAX_INPUT], mud_update[MAX_INPUT];
+	char var[MAX_INPUT_LEN], val[MAX_INPUT_LEN];
+	char mud_name[MAX_INPUT_LEN], mud_host[MAX_INPUT_LEN], mud_port[MAX_INPUT_LEN];
+	char msg_user[MAX_INPUT_LEN], msg_time[MAX_INPUT_LEN], msg_body[MAX_INPUT_LEN];
+	char mud_players[MAX_INPUT_LEN], mud_uptime[MAX_INPUT_LEN], mud_update[MAX_INPUT_LEN];
 	char *pti, *pto;
 
 	struct tm timeval_tm;
