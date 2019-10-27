@@ -393,7 +393,7 @@ void close_socket(D_SOCKET *dsock, bool reconnect)
 
 bool read_from_socket(D_SOCKET *dsock)
 {
-  unsigned char input[MAX_INPUT_SIZE];
+  unsigned char input[MAX_INPUT_LEN];
   int size;
   extern int errno;
 
@@ -407,7 +407,7 @@ bool read_from_socket(D_SOCKET *dsock)
     return FALSE;
   }
 
-  size = read(dsock->control, input, MAX_INPUT_SIZE - 1);
+  size = read(dsock->control, input, MAX_INPUT_LEN - 1);
 
   if (size <= 0)
   {

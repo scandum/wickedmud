@@ -32,7 +32,7 @@
 /* A few globals */
 #define PULSES_PER_SECOND    10                   /* must divide 1000 : 4, 5 or 8 works */
 #define MAX_BUFFER         2000                   /* seems like a decent amount         */
-#define MAX_INPUT_SIZE     2000
+#define MAX_INPUT_LEN      2000
 #define MAX_OUTPUT        20000                   /* well shoot me if it isn't enough   */
 #define MAX_HELP_ENTRY     4096                   /* roughly 40 lines of blocktext      */
 #define MUDPORT            9009                   /* just set whatever port you want    */
@@ -369,7 +369,7 @@ struct mth_data
 	struct msdp_data ** msdp_data;
 	char              * proxy;
 	char              * terminal_type;
-	char                telbuf[MAX_INPUT_SIZE];
+	char                telbuf[MAX_INPUT_LEN];
 	int                 teltop;
 	long long           mtts;
 	int                 comm_flags;

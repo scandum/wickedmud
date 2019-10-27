@@ -180,9 +180,9 @@ int translate_telopts(D_S *d, unsigned char *src, int srclen, unsigned char *out
 				srclen = d->mth->mccp3->next_out - mud->mccp_buf;
 				pti = mud->mccp_buf;
 
-				if (srclen + outlen > MAX_INPUT)
+				if (srclen + outlen > MAX_INPUT_LEN)
 				{
-					srclen = MAX_INPUT - outlen - 1;
+					srclen = MAX_INPUT_LEN - outlen - 1;
 				}
 				break;
 
@@ -223,7 +223,7 @@ int translate_telopts(D_S *d, unsigned char *src, int srclen, unsigned char *out
 
 	if (d->mth->teltop)
 	{
-		if (d->mth->teltop + srclen + 1 < MAX_INPUT)
+		if (d->mth->teltop + srclen + 1 < MAX_INPUT_LEN)
 		{
 			memcpy(d->mth->telbuf + d->mth->teltop, pti, srclen);
 
@@ -502,7 +502,7 @@ int process_will_ttype( D_S *d, unsigned char *src, int srclen )
 
 int process_sb_ttype_is( D_S *d, unsigned char *src, int srclen )
 {
-	char val[MAX_INPUT];
+	char val[MAX_INPUT_LEN];
 	char *pto;
 	int i;
 
@@ -619,7 +619,7 @@ int process_will_new_environ( D_S *d, unsigned char *src, int srclen )
 
 int process_sb_new_environ( D_S *d, unsigned char *src, int srclen )
 {
-	char var[MAX_INPUT], val[MAX_INPUT];
+	char var[MAX_INPUT_LEN], val[MAX_INPUT_LEN];
 	char *pto;
 	int i;
 
@@ -712,7 +712,7 @@ int process_do_charset( D_S *d, unsigned char *src, int srclen )
 
 int process_sb_charset( D_S *d, unsigned char *src, int srclen )
 {
-	char val[MAX_INPUT];
+	char val[MAX_INPUT_LEN];
 	char *pto;
 	int i;
 
@@ -795,7 +795,7 @@ int process_do_msdp( D_S *d, unsigned char *src, int srclen )
 
 int process_sb_msdp( D_S *d, unsigned char *src, int srclen )
 {
-	char var[MAX_INPUT], val[MAX_INPUT];
+	char var[MAX_INPUT_LEN], val[MAX_INPUT_LEN];
 	char *pto;
 	int i, nest;
 
@@ -878,7 +878,7 @@ int process_do_gmcp( D_S *d, unsigned char *src, int srclen )
 
 int process_sb_gmcp( D_S *d, unsigned char *src, int srclen )
 {
-	char out[MAX_INPUT];
+	char out[MAX_INPUT_LEN];
 	int outlen, skiplen;
 
 	skiplen = skip_sb(d, src, srclen);
